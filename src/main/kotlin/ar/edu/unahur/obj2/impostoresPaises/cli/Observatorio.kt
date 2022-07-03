@@ -8,4 +8,8 @@ object observatorio {
     fun necesitanTraducción(pais: Pais, otroPais: Pais): Boolean {
         return pais.necesitanTraduccion(otroPais)
     }
+
+    fun sonPotencialesAliados(pais: Pais, otroPais: Pais): Boolean {
+        return pais.sonPotencialesAliados(otroPais)
+    }
 }
