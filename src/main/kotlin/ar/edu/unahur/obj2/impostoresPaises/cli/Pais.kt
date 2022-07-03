@@ -1,5 +1,6 @@
 package ar.edu.unahur.obj2.impostoresPaises.cli
 
+import java.nio.DoubleBuffer
 import kotlin.math.roundToInt
 
 class Pais (
@@ -31,4 +32,31 @@ class Pais (
     }
     return paisMasPoblado
   }
+
+  fun sonLimitrofes(pais: Pais) = pais.paisesLimitrofes.any{ it.nombre == nombre }
+
+  fun necesitanTraduccion(pais: Pais): Boolean{
+    var contador = 0
+    idiomasOficiales.map {
+      if(pais.idiomasOficiales.contains(it)){
+        contador++
+      }
+    }
+    return contador == 0
+  }
+
+  fun sonPotencialesAliados(pais: Pais): Boolean {
+    var contador = 0
+    bloquesRegionales.map {
+      if(pais.bloquesRegionales.contains(it)){
+        contador++
+      }
+    }
+    return contador == 0 && !necesitanTraduccion(pais)
+  }
+
+  fun convieneIrDeCompras(pais: Pais) = pais.cotizacionDolar > cotizacionDolar
+
+  fun aCuantoEquivale(pais: Pais, monto: Double) = pais.cotizacionDolar * (monto/cotizacionDolar)
+
 }
