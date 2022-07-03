@@ -2,8 +2,12 @@ package ar.edu.unahur.obj2.impostoresPaises.cli
 
 object observatorio {
     val paises = mutableListOf<Pais>()
+    val continentes = mutableListOf<String>()
 
     fun agregarPais(pais: Pais): Unit {
+        if(!continentes.contains(pais.continente)) {
+            continentes.add(pais.continente)
+        }
         paises.add(pais)
     }
 
@@ -30,5 +34,30 @@ object observatorio {
     fun obtener5TopPaises(): List<Pais> {
         paises.sortByDescending { it.densidadPoblacional() }
         return paises.subList(0, 5)
+    }
+
+    fun paisesDeContinente(continente: String): List<Pais> {
+        return paises.filter { it.continente === continente }
+    }
+
+    fun continenteConMasPlurinacionales(): String {
+        val continenteConMas = object {
+            var nombre = ""
+            var cantidad = 0
+        }
+        continentes.forEach {
+            val paisesDeContinente = this.paisesDeContinente(it)
+            var contadorDePlurinacionalidad = 0
+            paisesDeContinente.forEach { pais ->
+                if (pais.esPlurinacional()) {
+                    contadorDePlurinacionalidad += 1
+                }
+            }
+            if (contadorDePlurinacionalidad > continenteConMas.cantidad) {
+                continenteConMas.nombre = it
+                continenteConMas.cantidad = contadorDePlurinacionalidad
+            }
+        }
+        return continenteConMas.nombre
     }
 }
