@@ -33,7 +33,7 @@ class Pais (
     return paisMasPoblado
   }
 
-  fun sonLimitrofes(pais: Pais) = pais.paisesLimitrofes.any{ it.nombre == nombre }
+  fun sonLimitrofes(pais: Pais) = pais.paisesLimitrofes.contains(nombre)
 
   fun necesitanTraduccion(pais: Pais): Boolean{
     var contador = 0
