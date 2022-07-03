@@ -16,4 +16,8 @@ object observatorio {
     fun convieneIrDeCompras(pais: Pais, otroPais: Pais): Boolean {
         return pais.convieneIrDeCompras(otroPais)
     }
+
+    fun aCuántoEquivale(pais: Pais, otroPais: Pais, monto: Double): Double {
+        return pais.aCuantoEquivale(otroPais, monto)
+    }
 }
