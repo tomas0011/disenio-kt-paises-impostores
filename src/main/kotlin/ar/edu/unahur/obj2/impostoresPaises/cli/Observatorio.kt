@@ -12,4 +12,8 @@ object observatorio {
     fun sonPotencialesAliados(pais: Pais, otroPais: Pais): Boolean {
         return pais.sonPotencialesAliados(otroPais)
     }
+
+    fun convieneIrDeCompras(pais: Pais, otroPais: Pais): Boolean {
+        return pais.convieneIrDeCompras(otroPais)
+    }
 }
