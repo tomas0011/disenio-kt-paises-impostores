@@ -2,13 +2,9 @@ package ar.edu.unahur.obj2.impostoresPaises.cli
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.shouldBe
-import kotlin.math.roundToInt
 
 class PaisTest : DescribeSpec({
     describe("Pais"){
-
-
-
 
         var Argentina = Pais(
             "Argentina",
@@ -62,12 +58,10 @@ class PaisTest : DescribeSpec({
             listOf("Portugues")
         )
 
-
         Argentina.addPaisesLimitrofes( listOf(Chile, Brasil, Uruguay))
         Chile.addPaisesLimitrofes(listOf(Argentina))
         Uruguay.addPaisesLimitrofes( listOf(Argentina, Brasil))
         Brasil.addPaisesLimitrofes(listOf(Argentina, Uruguay))
-
 
         describe("Paises plurinacionales"){
             it("Argentina no deberia ser un pais plurinacional"){
