@@ -1,8 +1,5 @@
 package ar.edu.unahur.obj2.impostoresPaises.cli
 
-
-
-
 class Pais (
   nombre: String,
   codigoiso3: String,
@@ -14,6 +11,4 @@ class Pais (
   paisesLimitrofes: List<Pais>,
   bloquesRegionales: List<String>,
   idiomasOficiales: List<String>
-){
-
-}
+){}
