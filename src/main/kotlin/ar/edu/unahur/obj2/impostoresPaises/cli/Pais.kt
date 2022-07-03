@@ -31,4 +31,6 @@ class Pais (
     }
     return paisMasPoblado
   }
+
+  fun esLimitrofeA(pais: Pais): Boolean = paisesLimitrofes.contains(pais)
 }
