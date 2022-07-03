@@ -60,4 +60,13 @@ object observatorio {
         }
         return continenteConMas.nombre
     }
+
+    fun paisesInsulares(): List<Pais> {
+        return paises.filter { it.esUnaIsla() }
+    }
+
+    fun conocerPromedioPoblacionalInsular(): Int {
+        val paisesInsulares = this.paisesInsulares()
+        return (paisesInsulares.sumBy { it.densidadPoblacional() }) / paisesInsulares.size
+    }
 }
