@@ -35,25 +35,9 @@ class Pais (
 
   fun sonLimitrofes(pais: Pais) = pais.paisesLimitrofes.contains(nombre)
 
-  fun necesitanTraduccion(pais: Pais): Boolean{
-    var contador = 0
-    idiomasOficiales.map {
-      if(pais.idiomasOficiales.contains(it)){
-        contador++
-      }
-    }
-    return contador == 0
-  }
-
-  fun sonPotencialesAliados(pais: Pais): Boolean {
-    var contador = 0
-    bloquesRegionales.map {
-      if(pais.bloquesRegionales.contains(it)){
-        contador++
-      }
-    }
-    return contador == 0 && !necesitanTraduccion(pais)
-  }
+  fun necesitanTraduccion(pais: Pais) = idiomasOficiales.any{ pais.idiomasOficiales.contains(it) }
+  
+  fun sonPotencialesAliados(pais: Pais) = bloquesRegionales.any{ pais.bloquesRegionales.contains(it) } && !necesitanTraduccion(pais)
 
   fun convieneIrDeCompras(pais: Pais) = pais.cotizacionDolar > cotizacionDolar
 
