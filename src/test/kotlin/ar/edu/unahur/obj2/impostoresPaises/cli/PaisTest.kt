@@ -16,7 +16,7 @@ class PaisTest : DescribeSpec({
             "Arg",
             235.0,
 
-            listOf("MERCOSUR", "MCCA", "CARICOM", "ALADI"),
+            listOf(BloquesRegionales.MERCOSUR, BloquesRegionales.MCCA,BloquesRegionales.CARICOM, BloquesRegionales.ALADI),
             listOf("Español")
         )
 
@@ -28,7 +28,7 @@ class PaisTest : DescribeSpec({
             "América",
             "Chi",
             932.58,
-            listOf("UNASUR", "CELAC"),
+            listOf(BloquesRegionales.UNASUR, BloquesRegionales.CELAC),
             listOf("Español")
         )
 
@@ -41,7 +41,7 @@ class PaisTest : DescribeSpec({
             "Uru",
             39.47,
 
-            listOf("MERCOSUR", "TLC"),
+            listOf(BloquesRegionales.MERCOSUR, BloquesRegionales.TLC),
             listOf("Español")
         )
 
@@ -54,7 +54,7 @@ class PaisTest : DescribeSpec({
             "Br",
             5.33,
 
-            listOf("MERCOSUR"),
+            listOf(BloquesRegionales.MERCOSUR),
             listOf("Portugues")
         )
 

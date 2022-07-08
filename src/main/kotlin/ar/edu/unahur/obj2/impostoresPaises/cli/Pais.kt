@@ -11,7 +11,7 @@ class Pais(
   private val continente: String,
   private val codigoMoneda: String,
   private val cotizacionDolar: Double,
-  private val bloquesRegionales: List<String>,
+  private val bloquesRegionales: List<BloquesRegionales>,
    val idiomasOficiales: List<String>
 ){
   var paisesLimitrofes = listOf<Pais>()
