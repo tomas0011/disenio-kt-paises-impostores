@@ -1,9 +1,10 @@
 package ar.edu.unahur.obj2.impostoresPaises.cli
 
+import java.text.DecimalFormat
 import kotlin.math.roundToInt
 
 class Pais(
-  private val nombre: String,
+   val nombre: String,
   private val codigoiso3: String,
   private val poblacion: Int,
   private val superficie: Double,
@@ -11,7 +12,7 @@ class Pais(
   private val codigoMoneda: String,
   private val cotizacionDolar: Double,
   private val bloquesRegionales: List<String>,
-  private val idiomasOficiales: List<String>
+   val idiomasOficiales: List<String>
 ){
   var paisesLimitrofes = listOf<Pais>()
 
@@ -38,13 +39,17 @@ class Pais(
     return paisMasPoblado
   }
 
-  fun sonLimitrofes(pais: Pais) = pais.paisesLimitrofes.contains(nombre)
+  fun sonLimitrofes(pais: Pais) = pais.paisesLimitrofes.any{ it.nombre == nombre }
 
-  fun necesitanTraduccion(pais: Pais) = idiomasOficiales.any{ pais.idiomasOficiales.contains(it) }
+  fun necesitanTraduccion(pais: Pais) = !idiomasOficiales.any{ pais.idiomasOficiales.contains(it) }
 
   fun sonPotencialesAliados(pais: Pais) = bloquesRegionales.any{ pais.bloquesRegionales.contains(it) } && !necesitanTraduccion(pais)
 
   fun convieneIrDeCompras(pais: Pais) = pais.cotizacionDolar > cotizacionDolar
 
-  fun aCuantoEquivale(pais: Pais, monto: Double) = pais.cotizacionDolar * (monto/cotizacionDolar)
+  fun aCuantoEquivale(pais: Pais, monto: Double): Double {
+    var equivalente = pais.cotizacionDolar * (monto/cotizacionDolar)
+    return (equivalente * 100.0).roundToInt() / 100.0
+  }
+
 }
