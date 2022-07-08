@@ -17,7 +17,7 @@ class PaisTest : DescribeSpec({
             235.0,
 
             listOf(BloquesRegionales.MERCOSUR, BloquesRegionales.MCCA,BloquesRegionales.CARICOM, BloquesRegionales.ALADI),
-            listOf("Español")
+            listOf(Idiomas.Español)
         )
 
         var Chile = Pais(
@@ -29,7 +29,7 @@ class PaisTest : DescribeSpec({
             "Chi",
             932.58,
             listOf(BloquesRegionales.UNASUR, BloquesRegionales.CELAC),
-            listOf("Español")
+            listOf(Idiomas.Español)
         )
 
         var Uruguay = Pais(
@@ -42,7 +42,7 @@ class PaisTest : DescribeSpec({
             39.47,
 
             listOf(BloquesRegionales.MERCOSUR, BloquesRegionales.TLC),
-            listOf("Español")
+            listOf(Idiomas.Español)
         )
 
         var Brasil = Pais(
@@ -55,7 +55,7 @@ class PaisTest : DescribeSpec({
             5.33,
 
             listOf(BloquesRegionales.MERCOSUR),
-            listOf("Portugues")
+            listOf(Idiomas.Portugues)
         )
 
         Argentina.addPaisesLimitrofes( listOf(Chile, Brasil, Uruguay))
