@@ -4,7 +4,7 @@ import java.text.DecimalFormat
 import kotlin.math.roundToInt
 
 class Pais(
-   val nombre: String,
+  val nombre: String,
   private val codigoiso3: String,
   private val poblacion: Int,
   private val superficie: Double,
