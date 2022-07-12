@@ -106,23 +106,78 @@ class ObservatorioTest: DescribeSpec({
 
     describe("metodos de observatorio") {
         describe("sonLimítrofes") {
-
+            it("Brasil deberia limitar con Argentina") {
+                observatorio.sonLimítrofes(Argentina, Brasil).shouldBeTrue()
+            }
+            it("Argentina deberia limitar con Brasil") {
+                observatorio.sonLimítrofes(Brasil,Argentina).shouldBeTrue()
+            }
+            it("Chile no deberia limitar con Uruguay") {
+                observatorio.sonLimítrofes(Uruguay,Chile).shouldBeFalse()
+            }
         }
 
         describe("necesitanTraducción") {
-
+            it("Argentina no deberia necesitar traduccion con Chile"){
+                observatorio.necesitanTraducción(Argentina, Chile).shouldBeFalse()
+            }
+            it("Argentina no deberia necesitar traduccion con Uruguay"){
+                observatorio.necesitanTraducción(Argentina, Uruguay).shouldBeFalse()
+            }
+            it("Argentina deberia necesitar traduccion con Brasil"){
+                observatorio.necesitanTraducción(Argentina, Brasil).shouldBeTrue()
+            }
         }
 
         describe("sonPotencialesAliados") {
-
+            it("Chile no deberia ser potencial Aliado de Brasil"){
+                observatorio.sonPotencialesAliados(Brasil, Chile).shouldBeFalse()
+            }
+            it("Uruguay no deberia ser potencial aliado de Chile"){
+                observatorio.sonPotencialesAliados(Uruguay, Chile).shouldBeFalse()
+            }
+            it("Argentina deberia ser potencial aliado de Uruguay"){
+                observatorio.sonPotencialesAliados(Uruguay, Argentina).shouldBeTrue()
+            }
+            it("Argentina no deberia ser potencial aliado de Brasil"){
+                observatorio.sonPotencialesAliados(Argentina,Brasil).shouldBeFalse()
+            }
         }
 
         describe("convieneIrDeCompras") {
+            describe("A Brasil le conviene ir de compras a todos los paises "){
+                it("A Brasil deberia convenirle ir de compras a Argentina"){
+                    observatorio.convieneIrDeCompras(Brasil,Argentina).shouldBeTrue()
+                }
+                it("A Brasil deberia convenirle ir de compras a Uruguay"){
+                    observatorio.convieneIrDeCompras(Brasil,Uruguay).shouldBeTrue()
+                }
+                it("A Brasil deberia convenirle ir de compras a Chile"){
+                    observatorio.convieneIrDeCompras(Brasil,Chile).shouldBeTrue()
+                }
+            }
 
+            describe("A Chile no deberia convenirle ir a comprar a ningun pais"){
+                it("A Chile no deberia convenirle ir de compras a Argentina"){
+                    observatorio.convieneIrDeCompras(Chile,Argentina).shouldBeFalse()
+                }
+                it("A Chile no deberia convenirle ir de compras a Brasil"){
+                    observatorio.convieneIrDeCompras(Chile, Brasil).shouldBeFalse()
+                }
+                it("A Chile no deberia convenirle ir de compras a Uruguay"){
+                    observatorio.convieneIrDeCompras(Chile, Uruguay).shouldBeFalse()
+                }
+            }
         }
 
         describe("aCuántoEquivale") {
+            it("100 pesos argentinos deberian ser 396.84"){
+                observatorio.aCuántoEquivale(Argentina, Chile, 100.0).shouldBe(396.84)
+            }
 
+            it("5 reales deberian ser 37.02 pesos Uruguayos"){
+                observatorio.aCuántoEquivale(Brasil, Uruguay, 5.0).shouldBe(37.03)
+            }
         }
     }
 
