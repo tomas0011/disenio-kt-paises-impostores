@@ -16,6 +16,14 @@ class Observatorio() {
         }
     }
 
+    fun getPais(nombre: String): Pais {
+        val pais = paises.find { it.nombre === nombre }
+        if (pais === null) {
+            throw Exception()
+        }
+        return pais
+    }
+
     fun agregarPais(masPaises: List<Pais>): Unit {
         masPaises.forEach {
             if (!this.continentes.contains(it.continente)) {
@@ -25,23 +33,33 @@ class Observatorio() {
         this.paises += masPaises
     }
 
-    fun sonLimítrofes(pais: Pais, otroPais: Pais): Boolean {
+    fun sonLimítrofes(nombrePais: String, nombreOtroPais: String): Boolean {
+        val pais = getPais(nombrePais)
+        val otroPais = getPais(nombreOtroPais)
         return pais.sonLimitrofes(otroPais)
     }
 
-    fun necesitanTraducción(pais: Pais, otroPais: Pais): Boolean {
+    fun necesitanTraducción(nombrePais: String, nombreOtroPais: String): Boolean {
+        val pais = getPais(nombrePais)
+        val otroPais = getPais(nombreOtroPais)
         return pais.necesitanTraduccion(otroPais)
     }
 
-    fun sonPotencialesAliados(pais: Pais, otroPais: Pais): Boolean {
+    fun sonPotencialesAliados(nombrePais: String, nombreOtroPais: String): Boolean {
+        val pais = getPais(nombrePais)
+        val otroPais = getPais(nombreOtroPais)
         return pais.sonPotencialesAliados(otroPais)
     }
 
-    fun convieneIrDeCompras(pais: Pais, otroPais: Pais): Boolean {
+    fun convieneIrDeCompras(nombrePais: String, nombreOtroPais: String): Boolean {
+        val pais = getPais(nombrePais)
+        val otroPais = getPais(nombreOtroPais)
         return pais.convieneIrDeCompras(otroPais)
     }
 
-    fun aCuántoEquivale(pais: Pais, otroPais: Pais, monto: Double): Double {
+    fun aCuántoEquivale(nombrePais: String, nombreOtroPais: String, monto: Double): Double {
+        val pais = getPais(nombrePais)
+        val otroPais = getPais(nombreOtroPais)
         return pais.aCuantoEquivale(otroPais, monto)
     }
 
