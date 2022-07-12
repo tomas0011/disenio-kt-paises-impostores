@@ -4,11 +4,8 @@ object observatorio {
     val paises = mutableListOf<Pais>()
     val continentes = mutableListOf<String>()
 
-    fun agregarPais(pais: Pais): Unit {
-        if(!continentes.contains(pais.continente)) {
-            continentes.add(pais.continente)
-        }
-        paises.add(pais)
+    fun agregarPais(masPaises: List<Pais>): Unit {
+        paises += masPaises
     }
 
     fun sonLimítrofes(pais: Pais, otroPais: Pais): Boolean {
