@@ -63,11 +63,6 @@ class PaisTest : DescribeSpec({
         Uruguay.addPaisesLimitrofes( listOf(Argentina, Brasil))
         Brasil.addPaisesLimitrofes(listOf(Argentina, Uruguay))
 
-
-        Argentina.idiomasOficiales.map{ println("Arg  " + it)}
-        Chile.idiomasOficiales.map{ println("BR  " + it)}
-
-
         describe("Paises plurinacionales"){
             it("Argentina no deberia ser un pais plurinacional"){
                 Argentina.esPlurinacional().shouldBeFalse()
