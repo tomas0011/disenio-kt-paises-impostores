@@ -58,6 +58,8 @@ class ObservatorioTest: DescribeSpec({
         Uruguay.addPaisesLimitrofes(listOf(Argentina, Brasil))
         Brasil.addPaisesLimitrofes(listOf(Argentina, Uruguay))
         Chile.addPaisesLimitrofes(listOf(Argentina))
+
+        observatorio.agregarPais(listOf(Argentina, Uruguay, Brasil, Chile))
     }
 
     describe("metodos de observatorio") {
@@ -86,6 +88,7 @@ class ObservatorioTest: DescribeSpec({
         describe("obtener5TopPaises") {
             it("deberia devolver al de mayor densidad primero") {
                 val top5Paises = observatorio.obtener5TopPaises()
+                top5Paises.forEach({ println(it.densidadPoblacional()) })
                 (top5Paises[0].densidadPoblacional() >= top5Paises[1].densidadPoblacional()).shouldBeTrue()
                 (top5Paises[0].densidadPoblacional() >= top5Paises[2].densidadPoblacional()).shouldBeTrue()
             }
@@ -96,7 +99,7 @@ class ObservatorioTest: DescribeSpec({
         }
 
         describe("conocerPromedioPoblacionalInsular") {
-            
+
         }
     }
 })
