@@ -40,7 +40,6 @@ class PaisTest : DescribeSpec({
             "América",
             "Uru",
             39.47,
-
             listOf(BloquesRegionales.MERCOSUR, BloquesRegionales.TLC),
             listOf(Idiomas.Español)
         )
@@ -53,7 +52,6 @@ class PaisTest : DescribeSpec({
             "América",
             "Br",
             5.33,
-
             listOf(BloquesRegionales.MERCOSUR),
             listOf(Idiomas.Portugues)
         )
