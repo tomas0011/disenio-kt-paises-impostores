@@ -17,9 +17,7 @@ class Pais(
   var paisesLimitrofes = listOf<Pais>()
 
   fun addPaisesLimitrofes(paises: List<Pais>){
-    for(pais in paises){
-      paisesLimitrofes += pais
-    }
+    paisesLimitrofes += paises
   }
 
   fun esPlurinacional() = idiomasOficiales.size > 1
@@ -41,7 +39,6 @@ class Pais(
     return paisMasPoblado
   }
 
-  //fun sonLimitrofes(pais: Pais) = pais.paisesLimitrofes.any{ it.nombre == nombre }
   fun sonLimitrofes(pais: Pais) = pais.paisesLimitrofes.contains(this)
   fun necesitanTraduccion(pais: Pais) = !idiomasOficiales.any{ pais.idiomasOficiales.contains(it) }
 
