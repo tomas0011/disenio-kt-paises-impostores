@@ -32,8 +32,8 @@ object observatorio {
     }
 
     fun obtener5TopPaises(): List<Pais> {
-        paises.sortByDescending { it.densidadPoblacional() }
-        return paises.subList(0, 5)
+        paises.sortBy { it.densidadPoblacional() }
+        return if (paises.size > 5) paises.reversed().subList(0, 5) else paises.reversed()
     }
 
     fun paisesDeContinente(continente: String): List<Pais> {
