@@ -5,6 +5,11 @@ object observatorio {
     val continentes = mutableListOf<String>()
 
     fun agregarPais(masPaises: List<Pais>): Unit {
+        masPaises.forEach {
+            if (!continentes.contains(it.continente)) {
+                continentes.add(it.continente)
+            }
+        }
         paises += masPaises
     }
 
@@ -50,7 +55,7 @@ object observatorio {
                     contadorDePlurinacionalidad += 1
                 }
             }
-            if (contadorDePlurinacionalidad > continenteConMas.cantidad) {
+            if (contadorDePlurinacionalidad > continenteConMas.cantidad || continenteConMas.nombre === "") {
                 continenteConMas.nombre = it
                 continenteConMas.cantidad = contadorDePlurinacionalidad
             }
