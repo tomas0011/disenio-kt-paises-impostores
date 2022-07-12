@@ -8,7 +8,7 @@ class Pais(
   private val codigoiso3: String,
   private val poblacion: Int,
   private val superficie: Double,
-  private val continente: String,
+  public val continente: String,
   private val codigoMoneda: String,
   private val cotizacionDolar: Double,
   private val bloquesRegionales: List<BloquesRegionales>,
@@ -50,5 +50,4 @@ class Pais(
     var equivalente = pais.cotizacionDolar * (monto/cotizacionDolar)
     return (equivalente * 100.0).roundToInt() / 100.0
   }
-
 }
