@@ -1,16 +1,28 @@
 package ar.edu.unahur.obj2.impostoresPaises.cli
 
-object observatorio {
+class Observatorio() {
     val paises = mutableListOf<Pais>()
     val continentes = mutableListOf<String>()
 
+    companion object {
+        private var instance: Observatorio? = null
+
+        fun getInstance(): Observatorio {
+            var checkInstance = instance
+            if (checkInstance === null) {
+                checkInstance = Observatorio()
+            }
+            return checkInstance
+        }
+    }
+
     fun agregarPais(masPaises: List<Pais>): Unit {
         masPaises.forEach {
-            if (!continentes.contains(it.continente)) {
-                continentes.add(it.continente)
+            if (!this.continentes.contains(it.continente)) {
+                this.continentes.add(it.continente)
             }
         }
-        paises += masPaises
+        this.paises += masPaises
     }
 
     fun sonLimítrofes(pais: Pais, otroPais: Pais): Boolean {
@@ -34,12 +46,12 @@ object observatorio {
     }
 
     fun obtener5TopPaises(): List<Pais> {
-        paises.sortBy { it.densidadPoblacional() }
-        return if (paises.size > 5) paises.reversed().subList(0, 5) else paises.reversed()
+        this.paises.sortBy { it.densidadPoblacional() }
+        return if (this.paises.size > 5) this.paises.reversed().subList(0, 5) else this.paises.reversed()
     }
 
     fun paisesDeContinente(continente: String): List<Pais> {
-        return paises.filter { it.continente === continente }
+        return this.paises.filter { it.continente === continente }
     }
 
     fun continenteConMasPlurinacionales(): String {
@@ -47,7 +59,7 @@ object observatorio {
             var nombre = ""
             var cantidad = 0
         }
-        continentes.forEach {
+        this.continentes.forEach {
             val paisesDeContinente = this.paisesDeContinente(it)
             var contadorDePlurinacionalidad = 0
             paisesDeContinente.forEach { pais ->
@@ -64,7 +76,7 @@ object observatorio {
     }
 
     fun paisesInsulares(): List<Pais> {
-        return paises.filter { it.esUnaIsla() }
+        return this.paises.filter { it.esUnaIsla() }
     }
 
     fun conocerPromedioPoblacionalInsular(): Int {
@@ -72,3 +84,5 @@ object observatorio {
         return (paisesInsulares.sumBy { it.densidadPoblacional() }) / paisesInsulares.size
     }
 }
+
+

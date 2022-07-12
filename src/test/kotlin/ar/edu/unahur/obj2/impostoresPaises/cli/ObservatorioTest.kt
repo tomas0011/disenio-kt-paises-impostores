@@ -6,6 +6,8 @@ import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.shouldBe
 
 class ObservatorioTest: DescribeSpec({
+    val observatorio: Observatorio = Observatorio.getInstance()
+
     val Argentina = Pais(
         "Argentina",
         "ARG",
