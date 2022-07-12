@@ -5,5 +5,8 @@ import kotlin.math.roundToInt
 
 enum class Idiomas(){
   Español,
-  Portugues
+  Portugues,
+  Frances,
+  Ingles,
+  Hawaiano
 }
