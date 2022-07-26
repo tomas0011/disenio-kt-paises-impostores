@@ -73,24 +73,9 @@ class Observatorio() {
     }
 
     fun continenteConMasPlurinacionales(): String {
-        val continenteConMas = object {
-            var nombre = ""
-            var cantidad = 0
-        }
-        this.continentes.forEach {
-            val paisesDeContinente = this.paisesDeContinente(it)
-            var contadorDePlurinacionalidad = 0
-            paisesDeContinente.forEach { pais ->
-                if (pais.esPlurinacional()) {
-                    contadorDePlurinacionalidad += 1
-                }
-            }
-            if (contadorDePlurinacionalidad > continenteConMas.cantidad || continenteConMas.nombre === "") {
-                continenteConMas.nombre = it
-                continenteConMas.cantidad = contadorDePlurinacionalidad
-            }
-        }
-        return continenteConMas.nombre
+        return this.paises.groupBy { it.continente }
+            .mapValues { paises -> paises.value.count { it.esPlurinacional() } }
+            .maxByOrNull { it.value }!!.key
     }
 
     fun paisesInsulares(): List<Pais> {
