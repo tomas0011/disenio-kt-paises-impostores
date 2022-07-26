@@ -5,14 +5,13 @@ class Observatorio() {
     val continentes = mutableListOf<String>()
 
     companion object {
-        private var instance: Observatorio? = null
+        private lateinit var instance: Observatorio
 
         fun getInstance(): Observatorio {
-            var checkInstance = instance
-            if (checkInstance === null) {
-                checkInstance = Observatorio()
+            if (!::instance.isInitialized) {
+                instance = Observatorio()
             }
-            return checkInstance
+            return instance
         }
     }
 
